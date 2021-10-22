@@ -16,7 +16,7 @@ pipeline {
         stage("Test") {
             steps {
                 script {
-                    final String url = "62.84.114.0:9889"
+                    final String url = "62.84.118.233:9889"
 
                     final Integer responseCode = sh(script: "curl -s -o /dev/null -w %{http_code} $url", returnStdout: true).trim()
                     
@@ -32,7 +32,7 @@ pipeline {
         stage("FingerprintTest") {
             steps {
                 script {
-                    final String url = "62.84.114.0:9889"
+                    final String url = "62.84.118.233:9889"
 
                     final String curlFingerprint = sh(script: "wget -q -O- $url | md5sum | cut -c 1-32", returnStdout: true).trim()
                     final String fileFingerprint = sh(script: "md5sum app/index.html | cut -c 1-32", returnStdout: true).trim()
